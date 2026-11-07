@@ -65,10 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     socket.on('message', (data) => {
-        if (data.type === 'server') {
-            hideTyping();
-        }
+        hideTyping();
         appendMessage(data);
+        if (data.type === 'user') {
+            showTyping();
+        }
     });
 
     function sendMessage() {
