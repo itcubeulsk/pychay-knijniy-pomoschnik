@@ -91,9 +91,9 @@ def handle_message(data):
 
         db_sess = db_session.create_session()
         query = Query(question=user_message_data['msg'],
-                      answer=server_reply_data['msg'])
-        current_user.queries.append(query)
-        db_sess.merge(current_user)
+                      answer=server_reply_data['msg'],
+                      user_id=current_user.id)
+        db_sess.add(query)
         db_sess.commit()
 
 
