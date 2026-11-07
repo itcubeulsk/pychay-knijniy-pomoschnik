@@ -17,7 +17,6 @@ MODEL_LARGE = os.getenv("VOIDAI_MODEL_LARGE", "gpt-5.6-luna")
 client = OpenAI(
     api_key=os.getenv("VOIDAI_API_KEY", ""),
     base_url=VOIDAI_BASE_URL,
-    timeout=120,
 )
 
 

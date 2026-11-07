@@ -40,11 +40,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    const typingIndicator = document.createElement('div');
+    typingIndicator.classList.add('message-wrapper', 'server-message-wrapper');
+    typingIndicator.innerHTML =
+        '<div class="message-bubble server-message-bubble typing-bubble">' +
+        '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>' +
+        '</div>';
+
+    function showTyping() {
+        if (!typingIndicator.parentNode) {
+            messagesDiv.appendChild(typingIndicator);
+            scrollToBottom();
+        }
+    }
+
+    function hideTyping() {
+        if (typingIndicator.parentNode) {
+            typingIndicator.remove();
+        }
+    }
+
     socket.on('connect', () => {
         console.log('Connected to server');
     });
 
     socket.on('message', (data) => {
+        if (data.type === 'server') {
+            hideTyping();
+        }
         appendMessage(data);
     });
 
@@ -56,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             socket.emit('message', { user: username, msg: messageText });
             messageInput.value = '';
             messageInput.focus();
+            showTyping();
         }
     }
 
