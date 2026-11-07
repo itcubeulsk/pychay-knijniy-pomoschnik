@@ -247,7 +247,6 @@ def search_or_create_admin():
 def book_delete(id):
     db_sess = db_session.create_session()
     book = db_sess.query(Book).filter(Book.id == id).first()
-    print(book.id)
     if book:
         db_sess.delete(book)
         db_sess.commit()
