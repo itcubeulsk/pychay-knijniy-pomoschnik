@@ -50,8 +50,11 @@ cd pychay-knijniy-pomoschnik
 ```bash
 docker build -t pychay-knijniy-pomoschnik .
 docker run -d -p 8085:8085 --name pychay-knijniy-pomoschnik \
-  --env-file .env pychay-knijniy-pomoschnik
+  pychay-knijniy-pomoschnik
 ```
+
+Если хотите переопределить ключ или модели — добавьте к `docker run`
+флаг `--env-file .env` (создав файл `.env`, см. `.env.example`).
 
 Либо одной командой через Docker Compose:
 
