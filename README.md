@@ -19,14 +19,18 @@
 
 ## Быстрый запуск (готовый образ из Docker Hub)
 
+Ключ `VOIDAI_API_KEY` уже вшит в образ — ничего дополнительно указывать не нужно:
+
 ```bash
 docker pull eaqash/pychay-knijniy-pomoschnik:latest
 docker run -d -p 8085:8085 --name pychay-knijniy-pomoschnik \
-  -e VOIDAI_API_KEY=sk-ваш-ключ \
   eaqash/pychay-knijniy-pomoschnik:latest
 ```
 
 После запуска откройте в браузере: **http://localhost:8085**
+
+При первом запуске автоматически создаётся учётная запись администратора:
+логин `admin`, пароль `admin` (email `admin@admin`).
 
 ## Запуск из исходников (сборка образа)
 
@@ -37,12 +41,9 @@ git clone https://github.com/itcubeulsk/pychay-knijniy-pomoschnik.git
 cd pychay-knijniy-pomoschnik
 ```
 
-2. Создайте файл `.env` с ключом API (можно скопировать из примера):
-
-```bash
-cp .env.example .env
-# откройте .env и подставьте свой ключ: VOIDAI_API_KEY=sk-...
-```
+2. Ключ `VOIDAI_API_KEY` уже вшит в Dockerfile — дополнительная настройка не нужна.
+   При желании его можно переопределить: скопируйте `.env.example` в `.env`
+   и подставьте своё значение (`.env` не попадает в git и не копируется в образ).
 
 3. Соберите образ и запустите контейнер:
 
@@ -82,7 +83,7 @@ curl -I http://localhost:8085
 
 | Переменная | Описание | По умолчанию |
 |---|---|---|
-| `VOIDAI_API_KEY` | Ключ API (обязательно) | — |
+| `VOIDAI_API_KEY` | Ключ API | вшит в Dockerfile (переопределяется через `-e` или `.env`) |
 | `VOIDAI_BASE_URL` | Базовый URL OpenAI-совместимого API | `https://api.voidai.app/v1` |
 | `VOIDAI_MODEL_FAST` | Модель для быстрых ответов | `gpt-4o-mini` |
 | `VOIDAI_MODEL_LARGE` | Модель для сложных задач | `gpt-5.6-luna` |
