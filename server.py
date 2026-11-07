@@ -1,3 +1,7 @@
+import eventlet
+
+eventlet.monkey_patch()
+
 import os
 from eventlet.wsgi import server
 from flask import Flask, render_template, redirect, abort
