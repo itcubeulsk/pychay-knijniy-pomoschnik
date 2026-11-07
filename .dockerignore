@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+.git/
+.gitignore
+.vscode/
+.idea/
+.env
+local_file_storage/
+README.md

@@ -1,0 +1,18 @@
+# Секреты
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# База данных (создаётся автоматически)
+db/*.db
+
+# Локальное хранилище
+local_file_storage/
