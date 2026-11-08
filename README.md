@@ -111,5 +111,3 @@ curl -I http://localhost:8085
 | `VOIDAI_BASE_URL` | Базовый URL OpenAI-совместимого API | `https://api.voidai.app/v1` |
 | `VOIDAI_MODEL_FAST` | Модель для быстрых ответов | `gpt-4o-mini` |
 | `VOIDAI_MODEL_LARGE` | Модель для сложных задач | `gpt-5.6-luna` |
-
-> ⚠️ Никогда не коммитьте `.env` с реальными ключами в репозиторий.
