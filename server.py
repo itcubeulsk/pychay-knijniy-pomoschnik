@@ -271,4 +271,4 @@ def watch_book(id):
 if __name__ == '__main__':
     db_session.global_init(DB_PATH)
     search_or_create_admin()
-    socketio.run(app, host='0.0.0.0', port=int(os.getenv('PORT', 8085)), debug=True)
+    socketio.run(app, host='0.0.0.0', port=8085, debug=True)
